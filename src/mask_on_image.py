@@ -36,7 +36,7 @@ for mask_name in tqdm.tqdm(mask_list):
 
     #########################################
     image_copy = np.copy(image)
-    image_copy[mask==1, :] = (255, 0, 125)
+    image_copy[mask==255, :] = (255, 0, 125)
     #########################################
 
     # Write output image into IMAGE_OUT_DIR folder

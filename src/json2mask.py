@@ -41,7 +41,7 @@ for json_name in tqdm.tqdm(json_list):
         # Check the objects ‘classTitle’ is ‘Freespace’ or not.
         if obj['classTitle']=='Freespace':
             #########################################
-            mask = cv2.fillPoly(mask, np.array([obj['points']['exterior']]), color=1)
+            mask = cv2.fillPoly(mask, np.array([obj['points']['exterior']]), color=255)
             #########################################
 
     # Write mask image into MASK_DIR folder
