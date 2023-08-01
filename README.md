@@ -1,6 +1,3 @@
-# FordOtosan_Internship
-This is a repository for my intership at Ford Otosan
-
 # Project
 ### What is Machine Learning?
 - Machine learning is a subset of AI where computers learn from data without being explicitly programmed. It involves training models on data to recognize patterns and make predictions or decisions. It has applications in various fields and is used for tasks like image recognition, natural language processing, and recommendation systems.
