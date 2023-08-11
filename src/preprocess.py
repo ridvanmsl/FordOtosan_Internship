@@ -1,5 +1,6 @@
 """
-We need to prepare the data to feed the network: we have - data/masks, data/images - directories where we prepared masks and input images. Then, convert each file/image into a tensor for our purpose.
+We need to prepare the data to feed the network: we have - data/masks, data/images - directories where we prepared masks and input images. 
+Then, convert each file/image into a tensor for our purpose.
 
 We need to write two functions in src/preprocess.py:
     - one for feature/input          -> tensorize_image()
@@ -65,7 +66,8 @@ def tensorize_image(image_path_list, output_shape, cuda=False):
     # Convert from list structure to torch tensor
 
     #########################################
-    # CODE
+    image_array = np.array(image_list, dtype=np.float32)
+    torch_image = torch.from_numpy(image_array).float()
     #########################################
 
     # If multiprocessing is chosen
@@ -119,7 +121,8 @@ def tensorize_mask(mask_path_list, output_shape, n_class, cuda=False):
         local_mask_list.append(torchlike_mask)
 
     #########################################
-    # CODE
+    mask_array = np.array(mask_list, dtype=np.int)
+    torch_mask = torch.from_numpy(mask_array).float()
     #########################################
     if cuda:
         torch_mask = torch_mask.cuda()
@@ -149,9 +152,15 @@ def image_mask_check(image_path_list, mask_path_list):
     """
 
     # Check list lengths
-    ###
-    # CODE
-    ###
+    if len(image_path_list) != len(mask_path_list):
+        return False
+
+    # Check if corresponding mask exists for each image
+    for image_path in image_path_list:
+        image_name = os.path.basename(image_path)
+        corresponding_mask = os.path.join(MASK_DIR, image_name)
+        if corresponding_mask not in mask_path_list:
+            return False
 
     return True
 
@@ -180,11 +189,12 @@ def torchlike_data(data):
     # Create and empty image whose dimension is similar to input
 
     #########################################
-    # CODE
+    torchlike_data_output = np.empty((n_channels, data.shape[0], data.shape[1]), dtype=np.float64)
     #########################################
 
     # For each channel
-    ...
+    for channel in range(n_channels):
+        torchlike_data_output[channel, :, :] = data[:, :, channel]
 
     return torchlike_data_output
 
@@ -218,14 +228,14 @@ def one_hot_encoder(data, n_class):
     encoded_data = np.zeros((*data.shape, n_class), dtype=np.int)
 
     # Define labels
-    
+
     #########################################
-    # CODE
+    labels = np.arange(n_class)
     #########################################
 
     #
-    for lbl in range(n_class):
-        ...
+    for lbl in labels:
+        encoded_data[:, :, lbl] = (data == lbl).astype(np.int)
 
 
 
@@ -252,6 +262,8 @@ if __name__ == '__main__':
     if image_mask_check(image_list, mask_list):
 
         #########################################
-        # CODE
+        for image_path, mask_path in zip(image_list[:5], mask_list[:5]):
+            print("Image:", image_path)
+            print("Mask:", mask_path)
         #########################################
 

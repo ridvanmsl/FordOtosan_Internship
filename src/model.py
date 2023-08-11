@@ -18,7 +18,8 @@ class FoInternNet(nn.Module):
             x : input data
         """
         #########################################
-        # CODE
+        x = self.conv1(x)
+        x = self.conv2(x)
         #########################################
         return x
 
