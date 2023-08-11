@@ -24,6 +24,7 @@
   2. Unsupervised Learning: Works with an unlabeled dataset, meaning there are no explicit output labels provided for the data instances.
 
 # Data Preprocessing
+## Extracting Masks
 ### What is color space ?
 - Color space is a system that defines how colors are represented and organized. It provides a numerical representation of colors for various applications like image processing and graphics.
 ### What RGB stands for ?
@@ -33,3 +34,65 @@
   between different color spaces, such as RGB to grayscale, RGB to HSV, RGB to LAB, etc.
 ### What is the popular library for image processing?
 - OpenCV is the most popular library for image processing in Python, widely used for various tasks like image manipulation, feature detection, and computer vision due to its efficiency and versatility.
+
+## Converting into Tensor
+### Explain Computational Graph.
+- A computational graph is a visual representation of mathematical operations and their connections in algorithms or models.
+### What is Tensor?
+- A tensor is a multi-dimensional numerical array used in machine learning and computational operations, like a versatile data container.
+### What is one hot encoding?
+- One-hot encoding is a method to represent categorical data as binary vectors, with a single "1" indicating the category and the rest as "0s".
+### What is CUDA programming? Answer without detail.
+- CUDA programming is a parallel computing platform and API developed by NVIDIA for utilizing GPUs (Graphics Processing Units) to accelerate computational tasks.
+
+# Design Segmentation Model
+### What is the difference between CNN and Fully CNN (FCNN) ?
+- CNN (Convolutional Neural Network) includes convolutional and fully connected layers for various tasks. FCNN (Fully Convolutional Neural Network) eliminates fully connected layers to preserve spatial information, commonly used for tasks like image segmentation.
+### What are the different layers on CNN ?
+- Different layers in a CNN (Convolutional Neural Network) are:
+  1- Convolutional Layers: Extract features from data.
+  2- Pooling Layers: Reduce spatial dimensions while keeping essential information.
+  3- Activation Layers: Introduce non-linearity using activation functions.
+  4- Fully Connected Layers: Connect neurons across layers.
+  5- Normalization Layers: Normalize neuron activations for stability.
+  6- Dropout Layers: Randomly deactivate neurons to prevent overfitting.
+### What is activation function ? Why is softmax usually used in the last layer?
+- Activation Function: A mathematical operation adding non-linearity in neural networks, aiding complex pattern learning.
+- Softmax is used in the last layer to convert raw scores into probabilities for easy and interpretable multiclass classification predictions.
+
+# Train
+### What is parameter in NN ?
+- Parameters in a neural network are the weights and biases that the model learns during training to make accurate predictions.
+### What is hyper-parameter in NN ?
+- Hyperparameters in a neural network are preset settings affecting learning, like learning rate and layer count, chosen before training and influencing performance.
+### We mention the dataset and we separate it into 2: training & test. In addition to them, there is a validation dataset. What is it for?
+- The validation dataset is used to tune model settings (hyperparameters) and prevent overfitting during training. It helps in adjusting the model's behavior before evaluating on the final test dataset.
+### What is epoch?
+- An epoch is a single iteration through the entire training dataset during model training, helping the model learn patterns over multiple passes.
+### What is batch?
+- A batch is a group of training examples processed together in one iteration during model training. It improves computation efficiency and can be adjusted using the batch size parameter.
+### What is iteration? Explain with an example: "If we have x images as data and batch size is y. Then an epoch should run z iterations."
+- An iteration is one cycle of processing a batch of data through a model during training. If you have x images as data and a batch size of y, then an epoch should run z iterations, where z = x / y.
+### What Is the Cost Function?
+- The cost function quantifies the difference between predicted and actual values in a machine learning model. Minimizing it helps improve prediction accuracy during training.
+### The process of minimizing (or maximizing) any mathematical expression is called optimization. What is/are the purpose(s) of an optimizer in NN?
+- The purpose of an optimizer in a neural network is to minimize (or maximize) the cost or loss function by adjusting the model's parameters during training. Optimizers are responsible for finding the best set of parameter values that result in the lowest possible loss, which indicates better model performance. They determine how the model's parameters are updated in response to the calculated gradients of the cost function with respect to those parameters. Optimizers play a crucial role in helping neural networks learn and converge to meaningful solutions efficiently.
+### What is Batch Gradient Descent & Stochastic Gradient Descent? Compare them.
+- Batch Gradient Descent (BGD):
+
+1- Computes gradients using the entire dataset.
+2- Slow for large datasets.
+- Stochastic Gradient Descent (SGD):
+
+1- Computes gradients using one data point at a time.
+2- Faster but noisy updates.
+- Comparison:
+
+1- BGD accurate but slow, SGD fast and noisy.
+2- BGD stable, SGD escapes local minima.
+3- BGD may get stuck, SGD oscillates but stabilizes.
+4- Mini-batch SGD balances advantages.
+- Choose based on speed and convergence requirements.
+
+### What is Backpropogation ? What is used for ?
+- Backpropagation is an algorithm to adjust neural network parameters by calculating gradients of the loss function. It's used for training the network by minimizing prediction errors through iterative parameter updates.
