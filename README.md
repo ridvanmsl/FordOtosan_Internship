@@ -50,12 +50,12 @@
 - CNN (Convolutional Neural Network) includes convolutional and fully connected layers for various tasks. FCNN (Fully Convolutional Neural Network) eliminates fully connected layers to preserve spatial information, commonly used for tasks like image segmentation.
 ### What are the different layers on CNN ?
 - Different layers in a CNN (Convolutional Neural Network) are:
-  1- Convolutional Layers: Extract features from data.
-  2- Pooling Layers: Reduce spatial dimensions while keeping essential information.
-  3- Activation Layers: Introduce non-linearity using activation functions.
-  4- Fully Connected Layers: Connect neurons across layers.
-  5- Normalization Layers: Normalize neuron activations for stability.
-  6- Dropout Layers: Randomly deactivate neurons to prevent overfitting.
+  1. Convolutional Layers: Extract features from data.
+  2. Pooling Layers: Reduce spatial dimensions while keeping essential information.
+  3. Activation Layers: Introduce non-linearity using activation functions.
+  4. Fully Connected Layers: Connect neurons across layers.
+  5. Normalization Layers: Normalize neuron activations for stability.
+  6. Dropout Layers: Randomly deactivate neurons to prevent overfitting.
 ### What is activation function ? Why is softmax usually used in the last layer?
 - Activation Function: A mathematical operation adding non-linearity in neural networks, aiding complex pattern learning.
 - Softmax is used in the last layer to convert raw scores into probabilities for easy and interpretable multiclass classification predictions.
@@ -80,18 +80,18 @@
 ### What is Batch Gradient Descent & Stochastic Gradient Descent? Compare them.
 - Batch Gradient Descent (BGD):
 
-1- Computes gradients using the entire dataset.
-2- Slow for large datasets.
+1. Computes gradients using the entire dataset.
+2. Slow for large datasets.
 - Stochastic Gradient Descent (SGD):
 
-1- Computes gradients using one data point at a time.
-2- Faster but noisy updates.
+1. Computes gradients using one data point at a time.
+2. Faster but noisy updates.
 - Comparison:
 
-1- BGD accurate but slow, SGD fast and noisy.
-2- BGD stable, SGD escapes local minima.
-3- BGD may get stuck, SGD oscillates but stabilizes.
-4- Mini-batch SGD balances advantages.
+1. BGD accurate but slow, SGD fast and noisy.
+2. BGD stable, SGD escapes local minima.
+3. BGD may get stuck, SGD oscillates but stabilizes.
+4. Mini-batch SGD balances advantages.
 - Choose based on speed and convergence requirements.
 
 ### What is Backpropogation ? What is used for ?
