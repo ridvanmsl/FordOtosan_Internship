@@ -73,6 +73,29 @@ if cuda:
 for epoch in range(epochs):
     running_loss = 0
     for ind in range(steps_per_epoch):
-        #########################################
-        # CODE
-        #########################################
+        
+        batch_input_paths = train_input_path_list[ind * batch_size: (ind + 1) * batch_size]
+        batch_label_paths = train_label_path_list[ind * batch_size: (ind + 1) * batch_size]
+
+        batch_inputs = [tensorize_image(input_path, input_shape) for input_path in batch_input_paths]
+        batch_labels = [tensorize_mask(label_path, input_shape) for label_path in batch_label_paths]
+
+        if cuda:
+            batch_inputs = [input_tensor.cuda() for input_tensor in batch_inputs]
+            batch_labels = [label_tensor.cuda() for label_tensor in batch_labels]
+
+        optimizer.zero_grad()  
+
+        outputs = model(batch_inputs)
+        
+        loss = criterion(outputs, nn.cat(batch_labels, dim=0))
+
+        loss.backward()
+        optimizer.step()
+
+        running_loss += loss.item()
+
+    epoch_loss = running_loss / steps_per_epoch
+    print(f"Epoch [{epoch + 1}/{epochs}] - Loss: {epoch_loss:.4f}")
+
+print("Training finished")
